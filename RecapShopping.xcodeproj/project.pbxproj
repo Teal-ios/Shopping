@@ -98,6 +98,8 @@
 		2FF45F962AADA2B600B22904 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				2FF45F812AAD921000B22904 /* RecapShoppingApp.swift */,
+				2FF45F832AAD921000B22904 /* ContentView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -138,8 +140,6 @@
 				2FF45F962AADA2B600B22904 /* Search */,
 				2FF45F972AADA2C400B22904 /* Like */,
 				2FF45F982AADA31F00B22904 /* ShoppingDetail */,
-				2FF45F812AAD921000B22904 /* RecapShoppingApp.swift */,
-				2FF45F832AAD921000B22904 /* ContentView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
