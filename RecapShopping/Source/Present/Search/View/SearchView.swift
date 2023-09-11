@@ -14,6 +14,12 @@ enum TabCase {
 }
 
 struct SearchView: View {
+    
+    @StateObject var container: MVIContainer<SearchIntentProtocol, SearchModelStateProtocol>
+    
+    private var intent: SearchIntentProtocol { container.intent }
+    private var state: SearchModelStateProtocol { container.model }
+
         
     let rows = [GridItem(.flexible()), GridItem(.flexible())]
     let categoryLayout = [GridItem(.flexible())]
@@ -21,24 +27,23 @@ struct SearchView: View {
     let colors: [Color] = [.black, .blue, .brown, .cyan, .gray, .indigo, .mint, .yellow, .orange, .purple]
     
     let shoppingList = CurrentValueSubject<NaverShoppingList?, NetworkError>(nil)
-    
-    let tabCase: TabCase
-    let productSearchUseCase: ProductSearchUseCase
-    
+            
     let category: [CategoryModel] = [CategoryModel(title: "정확도", isSelect: true), CategoryModel(title: "날짜순", isSelect: false), CategoryModel(title: "가격높은순", isSelect: false), CategoryModel(title: "가격낮은순", isSelect: false)]
     
-    @Binding var searchText: String
-    
-    init(tabCase: TabCase, searchText: String, productSearchUseCase: ProductSearchUseCase) {
-        self.productSearchUseCase = productSearchUseCase
-        self.tabCase = tabCase
-        self._searchText = .constant("")
-    }
+    @State var searchText: String = ""
     
     var body: some View {
+        bodyView()
+            .onAppear(perform: intent.viewOnAppear)
+            .navigationBarTitle(state.navigationTitle, displayMode: .inline)
+            .modifier(SearchRouter(subjects: state.routerSubject, intent: intent))
+    }
+}
+
+private extension SearchView {
+    func bodyView() -> some View {
         var cancellable = Set<AnyCancellable>()
-        
-        VStack {
+        return VStack {
             Text("쇼핑 검색")
                 .bold()
             HStack {
@@ -72,7 +77,7 @@ struct SearchView: View {
                 .foregroundColor(.black)
             }
             .padding()
-            if tabCase == .search {
+            if container.model.tabCase == .search {
                 ScrollView(.horizontal) {
                     HStack {
                         ForEach(category, id: \.id) { category in
@@ -106,17 +111,6 @@ struct SearchView: View {
                     .padding()
                 }
                 .frame(height: 24)
-                .onAppear {
-                    self.productSearchUseCase.excute(item: "감자")
-                        .sink { error in
-                            print(error)
-                        } receiveValue: { receive in
-                            print(receive)
-                            self.shoppingList.send(receive)
-                        }
-                        .store(in: &cancellable)
-
-                }
             }
             
             ScrollView {
@@ -163,14 +157,12 @@ struct SearchView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let service = ServiceImpl.shared
-        let productSearchRepositoryImpl = ProductSearchRepositoryImpl(service: service)
-        let productSearchUseCaseImpl = ProductSearchUseCaseImpl(productSearchRepository: productSearchRepositoryImpl)
-        SearchView(tabCase: .search, searchText: "cody", productSearchUseCase: productSearchUseCaseImpl)
+        
+        SearchView.build(data: .init())
     }
 }
 
-extension UIScreen{
+extension UIScreen {
     static let screenWidth = UIScreen.main.bounds.size.width
     static let screenHeight = UIScreen.main.bounds.size.height
     static let screenSize = UIScreen.main.bounds.size
