@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 enum TabCase {
     case search
@@ -13,21 +14,36 @@ enum TabCase {
 }
 
 struct SearchView: View {
+    
+    @StateObject var container: MVIContainer<SearchIntentProtocol, SearchModelStateProtocol>
+    
+    private var intent: SearchIntentProtocol { container.intent }
+    private var state: SearchModelStateProtocol { container.model }
+
         
     let rows = [GridItem(.flexible()), GridItem(.flexible())]
     let categoryLayout = [GridItem(.flexible())]
     
     let colors: [Color] = [.black, .blue, .brown, .cyan, .gray, .indigo, .mint, .yellow, .orange, .purple]
     
-    let tabCase: TabCase
-    
+    let shoppingList = CurrentValueSubject<NaverShoppingList?, NetworkError>(nil)
+            
     let category: [CategoryModel] = [CategoryModel(title: "정확도", isSelect: true), CategoryModel(title: "날짜순", isSelect: false), CategoryModel(title: "가격높은순", isSelect: false), CategoryModel(title: "가격낮은순", isSelect: false)]
     
-    @Binding var searchText: String
+    @State var searchText: String = ""
     
     var body: some View {
-        
-        VStack {
+        bodyView()
+            .onAppear(perform: intent.viewOnAppear)
+            .navigationBarTitle(state.navigationTitle, displayMode: .inline)
+            .modifier(SearchRouter(subjects: state.routerSubject, intent: intent))
+    }
+}
+
+private extension SearchView {
+    func bodyView() -> some View {
+        var cancellable = Set<AnyCancellable>()
+        return VStack {
             Text("쇼핑 검색")
                 .bold()
             HStack {
@@ -61,7 +77,7 @@ struct SearchView: View {
                 .foregroundColor(.black)
             }
             .padding()
-            if tabCase == .search {
+            if container.model.tabCase == .search {
                 ScrollView(.horizontal) {
                     HStack {
                         ForEach(category, id: \.id) { category in
@@ -141,11 +157,12 @@ struct SearchView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView(tabCase: .search, searchText: .constant("cody"))
+        
+        SearchView.build(data: .init())
     }
 }
 
-extension UIScreen{
+extension UIScreen {
     static let screenWidth = UIScreen.main.bounds.size.width
     static let screenHeight = UIScreen.main.bounds.size.height
     static let screenSize = UIScreen.main.bounds.size

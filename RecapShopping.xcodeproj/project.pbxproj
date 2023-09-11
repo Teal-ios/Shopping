@@ -8,6 +8,42 @@
 
 /* Begin PBXBuildFile section */
 		2F761F9C2AADBA8F00F9D20D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 2F761F9B2AADBA8F00F9D20D /* Realm */; };
+		2F761FA02AADBCB200F9D20D /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F761F9F2AADBCB200F9D20D /* Service.swift */; };
+		2F761FA22AADBCE300F9D20D /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F761FA12AADBCE300F9D20D /* Router.swift */; };
+		2F761FA42AADBCFB00F9D20D /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F761FA32AADBCFB00F9D20D /* TargetType.swift */; };
+		2F761FA62AADBD0E00F9D20D /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F761FA52AADBD0E00F9D20D /* HTTPMethod.swift */; };
+		2F761FA82AADBD2400F9D20D /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F761FA72AADBD2400F9D20D /* NetworkError.swift */; };
+		2F761FAA2AADBDD700F9D20D /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F761FA92AADBDD700F9D20D /* APIKey.swift */; };
+		2F761FAE2AADBF5E00F9D20D /* NaverShoppingListQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F761FAD2AADBF5E00F9D20D /* NaverShoppingListQuery.swift */; };
+		2F761FB02AADBF7500F9D20D /* NaverShoppingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F761FAF2AADBF7500F9D20D /* NaverShoppingList.swift */; };
+		2F761FB22AADC24B00F9D20D /* NaverShoppingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F761FB12AADC24B00F9D20D /* NaverShoppingItem.swift */; };
+		2F761FB42AADC2DC00F9D20D /* NaverShoppingListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F761FB32AADC2DC00F9D20D /* NaverShoppingListDTO.swift */; };
+		2F761FB62AADC2E500F9D20D /* NaverShoppingItemDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F761FB52AADC2E500F9D20D /* NaverShoppingItemDTO.swift */; };
+		2F761FB82AADC43000F9D20D /* ProductSearchRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F761FB72AADC43000F9D20D /* ProductSearchRepositoryImpl.swift */; };
+		2F761FBA2AADC52D00F9D20D /* ProductSearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F761FB92AADC52D00F9D20D /* ProductSearchRepository.swift */; };
+		2F761FBC2AADC70200F9D20D /* ProductSearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F761FBB2AADC70200F9D20D /* ProductSearchUseCase.swift */; };
+		2FE1C6472AAEAB670025C801 /* SearchIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C6462AAEAB670025C801 /* SearchIntent.swift */; };
+		2FE1C6492AAEAB6E0025C801 /* SearchIntentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C6482AAEAB6E0025C801 /* SearchIntentProtocol.swift */; };
+		2FE1C64D2AAEAD300025C801 /* SearchView+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C64C2AAEAD300025C801 /* SearchView+Build.swift */; };
+		2FE1C64F2AAEAD660025C801 /* SearchTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C64E2AAEAD660025C801 /* SearchTypes.swift */; };
+		2FE1C6522AAEAEB60025C801 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C6512AAEAEB60025C801 /* SearchModel.swift */; };
+		2FE1C6542AAEAEBE0025C801 /* SearchModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C6532AAEAEBE0025C801 /* SearchModelProtocol.swift */; };
+		2FE1C6562AAEB04F0025C801 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C6552AAEB04F0025C801 /* SearchRouter.swift */; };
+		2FE1C6592AAEB0A80025C801 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C6582AAEB0A80025C801 /* RouterProtocol.swift */; };
+		2FE1C65B2AAEB0AE0025C801 /* RouterScreenProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C65A2AAEB0AE0025C801 /* RouterScreenProtocol.swift */; };
+		2FE1C6602AAEB0EE0025C801 /* RouterAlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C65F2AAEB0EE0025C801 /* RouterAlertModifier.swift */; };
+		2FE1C6622AAEB10A0025C801 /* RouterCloseModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C6612AAEB10A0025C801 /* RouterCloseModifier.swift */; };
+		2FE1C6642AAEB11E0025C801 /* RouterNavigationStackModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C6632AAEB11E0025C801 /* RouterNavigationStackModifier.swift */; };
+		2FE1C6662AAEB1440025C801 /* RouterNavigationViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C6652AAEB1440025C801 /* RouterNavigationViewModifier.swift */; };
+		2FE1C6682AAEB1540025C801 /* RouterSheetModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C6672AAEB1540025C801 /* RouterSheetModifier.swift */; };
+		2FE1C66B2AAED7520025C801 /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C66A2AAED7520025C801 /* ItemDetailView.swift */; };
+		2FE1C66D2AAEDB700025C801 /* ItemDetailView+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C66C2AAEDB700025C801 /* ItemDetailView+Build.swift */; };
+		2FE1C6702AAEDB8F0025C801 /* ItemDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C66F2AAEDB8F0025C801 /* ItemDetailModel.swift */; };
+		2FE1C6722AAEDB980025C801 /* ItemDetailModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C6712AAEDB980025C801 /* ItemDetailModelProtocol.swift */; };
+		2FE1C6772AAEDBE90025C801 /* ItemDetailTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C6762AAEDBE90025C801 /* ItemDetailTypes.swift */; };
+		2FE1C6792AAEDC890025C801 /* ItemDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C6782AAEDC890025C801 /* ItemDetailRouter.swift */; };
+		2FE1C67B2AAEDCC10025C801 /* ItemDetailIntentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C67A2AAEDCC10025C801 /* ItemDetailIntentProtocol.swift */; };
+		2FE1C67D2AAEDCE10025C801 /* ItemDetailIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C67C2AAEDCE10025C801 /* ItemDetailIntent.swift */; };
 		2FF45F822AAD921000B22904 /* RecapShoppingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF45F812AAD921000B22904 /* RecapShoppingApp.swift */; };
 		2FF45F862AAD921100B22904 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FF45F852AAD921100B22904 /* Assets.xcassets */; };
 		2FF45F8A2AAD921100B22904 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FF45F892AAD921100B22904 /* Preview Assets.xcassets */; };
@@ -18,6 +54,42 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F761F9F2AADBCB200F9D20D /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		2F761FA12AADBCE300F9D20D /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		2F761FA32AADBCFB00F9D20D /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
+		2F761FA52AADBD0E00F9D20D /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		2F761FA72AADBD2400F9D20D /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		2F761FA92AADBDD700F9D20D /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		2F761FAD2AADBF5E00F9D20D /* NaverShoppingListQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverShoppingListQuery.swift; sourceTree = "<group>"; };
+		2F761FAF2AADBF7500F9D20D /* NaverShoppingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverShoppingList.swift; sourceTree = "<group>"; };
+		2F761FB12AADC24B00F9D20D /* NaverShoppingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverShoppingItem.swift; sourceTree = "<group>"; };
+		2F761FB32AADC2DC00F9D20D /* NaverShoppingListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverShoppingListDTO.swift; sourceTree = "<group>"; };
+		2F761FB52AADC2E500F9D20D /* NaverShoppingItemDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverShoppingItemDTO.swift; sourceTree = "<group>"; };
+		2F761FB72AADC43000F9D20D /* ProductSearchRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSearchRepositoryImpl.swift; sourceTree = "<group>"; };
+		2F761FB92AADC52D00F9D20D /* ProductSearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSearchRepository.swift; sourceTree = "<group>"; };
+		2F761FBB2AADC70200F9D20D /* ProductSearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSearchUseCase.swift; sourceTree = "<group>"; };
+		2FE1C6462AAEAB670025C801 /* SearchIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchIntent.swift; sourceTree = "<group>"; };
+		2FE1C6482AAEAB6E0025C801 /* SearchIntentProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchIntentProtocol.swift; sourceTree = "<group>"; };
+		2FE1C64C2AAEAD300025C801 /* SearchView+Build.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchView+Build.swift"; sourceTree = "<group>"; };
+		2FE1C64E2AAEAD660025C801 /* SearchTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTypes.swift; sourceTree = "<group>"; };
+		2FE1C6512AAEAEB60025C801 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
+		2FE1C6532AAEAEBE0025C801 /* SearchModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModelProtocol.swift; sourceTree = "<group>"; };
+		2FE1C6552AAEB04F0025C801 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
+		2FE1C6582AAEB0A80025C801 /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
+		2FE1C65A2AAEB0AE0025C801 /* RouterScreenProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterScreenProtocol.swift; sourceTree = "<group>"; };
+		2FE1C65F2AAEB0EE0025C801 /* RouterAlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterAlertModifier.swift; sourceTree = "<group>"; };
+		2FE1C6612AAEB10A0025C801 /* RouterCloseModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterCloseModifier.swift; sourceTree = "<group>"; };
+		2FE1C6632AAEB11E0025C801 /* RouterNavigationStackModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterNavigationStackModifier.swift; sourceTree = "<group>"; };
+		2FE1C6652AAEB1440025C801 /* RouterNavigationViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterNavigationViewModifier.swift; sourceTree = "<group>"; };
+		2FE1C6672AAEB1540025C801 /* RouterSheetModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterSheetModifier.swift; sourceTree = "<group>"; };
+		2FE1C66A2AAED7520025C801 /* ItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailView.swift; sourceTree = "<group>"; };
+		2FE1C66C2AAEDB700025C801 /* ItemDetailView+Build.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemDetailView+Build.swift"; sourceTree = "<group>"; };
+		2FE1C66F2AAEDB8F0025C801 /* ItemDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailModel.swift; sourceTree = "<group>"; };
+		2FE1C6712AAEDB980025C801 /* ItemDetailModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailModelProtocol.swift; sourceTree = "<group>"; };
+		2FE1C6762AAEDBE90025C801 /* ItemDetailTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailTypes.swift; sourceTree = "<group>"; };
+		2FE1C6782AAEDC890025C801 /* ItemDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailRouter.swift; sourceTree = "<group>"; };
+		2FE1C67A2AAEDCC10025C801 /* ItemDetailIntentProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailIntentProtocol.swift; sourceTree = "<group>"; };
+		2FE1C67C2AAEDCE10025C801 /* ItemDetailIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailIntent.swift; sourceTree = "<group>"; };
 		2FF45F7E2AAD921000B22904 /* RecapShopping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecapShopping.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FF45F812AAD921000B22904 /* RecapShoppingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecapShoppingApp.swift; sourceTree = "<group>"; };
 		2FF45F852AAD921100B22904 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -41,6 +113,141 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F761F9D2AADBC5200F9D20D /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				2F761F9E2AADBC8000F9D20D /* Response */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		2F761F9E2AADBC8000F9D20D /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				2F761FB32AADC2DC00F9D20D /* NaverShoppingListDTO.swift */,
+				2F761FB52AADC2E500F9D20D /* NaverShoppingItemDTO.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		2F761FAB2AADBF0B00F9D20D /* Query */ = {
+			isa = PBXGroup;
+			children = (
+				2F761FAD2AADBF5E00F9D20D /* NaverShoppingListQuery.swift */,
+			);
+			path = Query;
+			sourceTree = "<group>";
+		};
+		2F761FAC2AADBF1000F9D20D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2FF45FA92AADB2AB00B22904 /* CategoryModel.swift */,
+				2F761FAF2AADBF7500F9D20D /* NaverShoppingList.swift */,
+				2F761FB12AADC24B00F9D20D /* NaverShoppingItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2FE1C6442AAEAB4E0025C801 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FF45FA12AADAC3700B22904 /* SearchView.swift */,
+				2FE1C64C2AAEAD300025C801 /* SearchView+Build.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FE1C6452AAEAB540025C801 /* Intent */ = {
+			isa = PBXGroup;
+			children = (
+				2FE1C6462AAEAB670025C801 /* SearchIntent.swift */,
+				2FE1C6482AAEAB6E0025C801 /* SearchIntentProtocol.swift */,
+			);
+			path = Intent;
+			sourceTree = "<group>";
+		};
+		2FE1C64A2AAEACF10025C801 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2FE1C6512AAEAEB60025C801 /* SearchModel.swift */,
+				2FE1C6532AAEAEBE0025C801 /* SearchModelProtocol.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2FE1C64B2AAEACF80025C801 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				2FE1C6552AAEB04F0025C801 /* SearchRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		2FE1C6502AAEADA50025C801 /* Type */ = {
+			isa = PBXGroup;
+			children = (
+				2FE1C64E2AAEAD660025C801 /* SearchTypes.swift */,
+			);
+			path = Type;
+			sourceTree = "<group>";
+		};
+		2FE1C6572AAEB0A10025C801 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				2FE1C6582AAEB0A80025C801 /* RouterProtocol.swift */,
+				2FE1C65A2AAEB0AE0025C801 /* RouterScreenProtocol.swift */,
+				2FE1C65E2AAEB0E30025C801 /* Modifier */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		2FE1C65E2AAEB0E30025C801 /* Modifier */ = {
+			isa = PBXGroup;
+			children = (
+				2FE1C65F2AAEB0EE0025C801 /* RouterAlertModifier.swift */,
+				2FE1C6612AAEB10A0025C801 /* RouterCloseModifier.swift */,
+				2FE1C6632AAEB11E0025C801 /* RouterNavigationStackModifier.swift */,
+				2FE1C6652AAEB1440025C801 /* RouterNavigationViewModifier.swift */,
+				2FE1C6672AAEB1540025C801 /* RouterSheetModifier.swift */,
+			);
+			path = Modifier;
+			sourceTree = "<group>";
+		};
+		2FE1C6692AAEB1C90025C801 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FE1C66A2AAED7520025C801 /* ItemDetailView.swift */,
+				2FE1C66C2AAEDB700025C801 /* ItemDetailView+Build.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FE1C66E2AAEDB820025C801 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2FE1C66F2AAEDB8F0025C801 /* ItemDetailModel.swift */,
+				2FE1C6712AAEDB980025C801 /* ItemDetailModelProtocol.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2FE1C6732AAEDBA50025C801 /* Intent */ = {
+			isa = PBXGroup;
+			children = (
+				2FE1C67A2AAEDCC10025C801 /* ItemDetailIntentProtocol.swift */,
+				2FE1C67C2AAEDCE10025C801 /* ItemDetailIntent.swift */,
+			);
+			path = Intent;
+			sourceTree = "<group>";
+		};
+		2FE1C6742AAEDBBE0025C801 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				2FE1C6782AAEDC890025C801 /* ItemDetailRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		2FF45F752AAD921000B22904 = {
 			isa = PBXGroup;
 			children = (
@@ -107,7 +314,11 @@
 		2FF45F962AADA2B600B22904 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				2FF45FA12AADAC3700B22904 /* SearchView.swift */,
+				2FE1C6502AAEADA50025C801 /* Type */,
+				2FE1C64B2AAEACF80025C801 /* Router */,
+				2FE1C64A2AAEACF10025C801 /* Model */,
+				2FE1C6452AAEAB540025C801 /* Intent */,
+				2FE1C6442AAEAB4E0025C801 /* View */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -119,16 +330,27 @@
 			path = Like;
 			sourceTree = "<group>";
 		};
-		2FF45F982AADA31F00B22904 /* ShoppingDetail */ = {
+		2FF45F982AADA31F00B22904 /* ItemDetail */ = {
 			isa = PBXGroup;
 			children = (
+				2FE1C6762AAEDBE90025C801 /* ItemDetailTypes.swift */,
+				2FE1C66E2AAEDB820025C801 /* Model */,
+				2FE1C6692AAEB1C90025C801 /* View */,
+				2FE1C6732AAEDBA50025C801 /* Intent */,
+				2FE1C6742AAEDBBE0025C801 /* Router */,
 			);
-			path = ShoppingDetail;
+			path = ItemDetail;
 			sourceTree = "<group>";
 		};
 		2FF45F992AADA49200B22904 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				2F761F9F2AADBCB200F9D20D /* Service.swift */,
+				2F761FA12AADBCE300F9D20D /* Router.swift */,
+				2F761FA72AADBD2400F9D20D /* NetworkError.swift */,
+				2F761FA32AADBCFB00F9D20D /* TargetType.swift */,
+				2F761FA52AADBD0E00F9D20D /* HTTPMethod.swift */,
+				2F761FA92AADBDD700F9D20D /* APIKey.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -136,6 +358,7 @@
 		2FF45F9A2AADA49700B22904 /* Utilites */ = {
 			isa = PBXGroup;
 			children = (
+				2FE1C6572AAEB0A10025C801 /* Router */,
 				2FF45FA52AADAD1400B22904 /* Image */,
 				2FF45FA42AADAD0D00B22904 /* Enum */,
 				2FF45F9C2AADA50200B22904 /* MVIContainer */,
@@ -149,7 +372,7 @@
 				2FF45F952AAD965A00B22904 /* Tab */,
 				2FF45F962AADA2B600B22904 /* Search */,
 				2FF45F972AADA2C400B22904 /* Like */,
-				2FF45F982AADA31F00B22904 /* ShoppingDetail */,
+				2FF45F982AADA31F00B22904 /* ItemDetail */,
 			);
 			path = Present;
 			sourceTree = "<group>";
@@ -207,6 +430,7 @@
 		2FF45FAC2AADB41E00B22904 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				2F761F9D2AADBC5200F9D20D /* DTO */,
 				2FF45F992AADA49200B22904 /* Services */,
 			);
 			path = Network;
@@ -215,6 +439,7 @@
 		2FF45FAD2AADB43100B22904 /* RepositoryImpl */ = {
 			isa = PBXGroup;
 			children = (
+				2F761FB72AADC43000F9D20D /* ProductSearchRepositoryImpl.swift */,
 			);
 			path = RepositoryImpl;
 			sourceTree = "<group>";
@@ -229,6 +454,7 @@
 		2FF45FAF2AADB46D00B22904 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				2F761FBB2AADC70200F9D20D /* ProductSearchUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -236,6 +462,7 @@
 		2FF45FB02AADB47000B22904 /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
+				2F761FB92AADC52D00F9D20D /* ProductSearchRepository.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -243,7 +470,8 @@
 		2FF45FB32AADB4C200B22904 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				2FF45FA92AADB2AB00B22904 /* CategoryModel.swift */,
+				2F761FAC2AADBF1000F9D20D /* Model */,
+				2F761FAB2AADBF0B00F9D20D /* Query */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -324,11 +552,47 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FE1C6602AAEB0EE0025C801 /* RouterAlertModifier.swift in Sources */,
+				2FE1C6792AAEDC890025C801 /* ItemDetailRouter.swift in Sources */,
+				2FE1C6772AAEDBE90025C801 /* ItemDetailTypes.swift in Sources */,
 				2FF45FA22AADAC3700B22904 /* SearchView.swift in Sources */,
+				2FE1C67D2AAEDCE10025C801 /* ItemDetailIntent.swift in Sources */,
+				2FE1C6472AAEAB670025C801 /* SearchIntent.swift in Sources */,
+				2F761FB22AADC24B00F9D20D /* NaverShoppingItem.swift in Sources */,
+				2FE1C6682AAEB1540025C801 /* RouterSheetModifier.swift in Sources */,
+				2FE1C6542AAEAEBE0025C801 /* SearchModelProtocol.swift in Sources */,
+				2FE1C6522AAEAEB60025C801 /* SearchModel.swift in Sources */,
+				2F761FB82AADC43000F9D20D /* ProductSearchRepositoryImpl.swift in Sources */,
+				2FE1C66B2AAED7520025C801 /* ItemDetailView.swift in Sources */,
+				2FE1C6642AAEB11E0025C801 /* RouterNavigationStackModifier.swift in Sources */,
+				2FE1C66D2AAEDB700025C801 /* ItemDetailView+Build.swift in Sources */,
+				2F761FB02AADBF7500F9D20D /* NaverShoppingList.swift in Sources */,
+				2F761FAE2AADBF5E00F9D20D /* NaverShoppingListQuery.swift in Sources */,
 				2FF45F9E2AADA51000B22904 /* MVIContainer.swift in Sources */,
+				2FE1C6592AAEB0A80025C801 /* RouterProtocol.swift in Sources */,
 				2FF45FA02AADABFC00B22904 /* TabView.swift in Sources */,
+				2FE1C6622AAEB10A0025C801 /* RouterCloseModifier.swift in Sources */,
+				2F761FBC2AADC70200F9D20D /* ProductSearchUseCase.swift in Sources */,
+				2FE1C6492AAEAB6E0025C801 /* SearchIntentProtocol.swift in Sources */,
+				2FE1C6562AAEB04F0025C801 /* SearchRouter.swift in Sources */,
+				2F761FA22AADBCE300F9D20D /* Router.swift in Sources */,
+				2FE1C64D2AAEAD300025C801 /* SearchView+Build.swift in Sources */,
+				2F761FA42AADBCFB00F9D20D /* TargetType.swift in Sources */,
+				2F761FBA2AADC52D00F9D20D /* ProductSearchRepository.swift in Sources */,
+				2FE1C64F2AAEAD660025C801 /* SearchTypes.swift in Sources */,
+				2F761FB42AADC2DC00F9D20D /* NaverShoppingListDTO.swift in Sources */,
+				2F761FA62AADBD0E00F9D20D /* HTTPMethod.swift in Sources */,
+				2FE1C6662AAEB1440025C801 /* RouterNavigationViewModifier.swift in Sources */,
+				2F761FAA2AADBDD700F9D20D /* APIKey.swift in Sources */,
+				2FE1C6722AAEDB980025C801 /* ItemDetailModelProtocol.swift in Sources */,
 				2FF45FAA2AADB2AB00B22904 /* CategoryModel.swift in Sources */,
 				2FF45F822AAD921000B22904 /* RecapShoppingApp.swift in Sources */,
+				2FE1C6702AAEDB8F0025C801 /* ItemDetailModel.swift in Sources */,
+				2FE1C65B2AAEB0AE0025C801 /* RouterScreenProtocol.swift in Sources */,
+				2F761FA02AADBCB200F9D20D /* Service.swift in Sources */,
+				2F761FA82AADBD2400F9D20D /* NetworkError.swift in Sources */,
+				2F761FB62AADC2E500F9D20D /* NaverShoppingItemDTO.swift in Sources */,
+				2FE1C67B2AAEDCC10025C801 /* ItemDetailIntentProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
