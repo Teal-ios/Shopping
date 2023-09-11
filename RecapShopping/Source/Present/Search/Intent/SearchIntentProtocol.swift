@@ -9,4 +9,6 @@ import Foundation
 
 protocol SearchIntentProtocol {
     func viewOnAppear()
+    func searchKeyboardButtonTapped()
+    func searchTextToIntent(text: String)
 }

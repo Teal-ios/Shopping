@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import Combine
 
 class SearchIntent {
 
+    private var cancellable = Set<AnyCancellable>()
     // MARK: Model
 
     private weak var model: SearchModelActionsProtocol?
@@ -22,6 +24,7 @@ class SearchIntent {
 
     private let externalData: SearchTypes.Intent.ExternalData
     private var contents: NaverShoppingList? = nil
+    private var text: String = ""
 
     // MARK: Life cycle
 
@@ -38,13 +41,32 @@ class SearchIntent {
 // MARK: - Public
 
 extension SearchIntent: SearchIntentProtocol {
+    func searchTextToIntent(text: String) {
+        self.text = text
+    }
+    
+    
     func viewOnAppear() {
         print("뷰뜸")
+    }
+    
+    func searchKeyboardButtonTapped() {
+        productShoppingUseCase.excute(item: text)
+            .sink { [weak self] error in
+                guard let self else { return }
+                print(error)
+            } receiveValue: { [weak self] shoppingList in
+                guard let self else { return }
+                print(shoppingList)
+                self.model?.fetchShoppingList(contents: shoppingList)
+            }
+            .store(in: &cancellable)
+
     }
 }
 
 // MARK: - Helper classes
 
 extension SearchTypes.Intent {
-    struct ExternalData {}
+    struct ExternalData { }
 }

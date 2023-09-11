@@ -19,14 +19,13 @@ struct SearchView: View {
     
     private var intent: SearchIntentProtocol { container.intent }
     private var state: SearchModelStateProtocol { container.model }
-
         
     let rows = [GridItem(.flexible()), GridItem(.flexible())]
     let categoryLayout = [GridItem(.flexible())]
     
     let colors: [Color] = [.black, .blue, .brown, .cyan, .gray, .indigo, .mint, .yellow, .orange, .purple]
     
-    let shoppingList = CurrentValueSubject<NaverShoppingList?, NetworkError>(nil)
+//    let shoppingList = CurrentValueSubject<NaverShoppingList?, NetworkError>(nil)
             
     let category: [CategoryModel] = [CategoryModel(title: "정확도", isSelect: true), CategoryModel(title: "날짜순", isSelect: false), CategoryModel(title: "가격높은순", isSelect: false), CategoryModel(title: "가격낮은순", isSelect: false)]
     
@@ -42,7 +41,6 @@ struct SearchView: View {
 
 private extension SearchView {
     func bodyView() -> some View {
-        var cancellable = Set<AnyCancellable>()
         return VStack {
             Text("쇼핑 검색")
                 .bold()
@@ -54,6 +52,11 @@ private extension SearchView {
                         .padding(.horizontal, 25)
                         .background(Color.gray)
                         .cornerRadius(8)
+                        .keyboardType(.default)
+                        .onSubmit {
+                            intent.searchTextToIntent(text: searchText)
+                            intent.searchKeyboardButtonTapped()
+                        }
                         
                     
                     HStack {
@@ -116,36 +119,39 @@ private extension SearchView {
             ScrollView {
                 
                 LazyVGrid(columns: rows) {
-                    ForEach(colors, id: \.self) { color in
+                    if state.shoppingList == nil {
                         
-                        VStack {
-                            ZStack(alignment: .bottomTrailing) {
-                                
-                                RoundedRectangle(cornerRadius: 10)
-                                    .frame(width: UIScreen.screenWidth / 2 - 20, height: UIScreen.screenWidth / 2 - 20)
-                                    .foregroundColor(color)
-                                ZStack(alignment: .center) {
-                                    Circle()
-                                        .background(.clear)
-                                        .foregroundColor(.white)
-                                        .frame(width: 32, height: 32)
-                                        .padding(8)
+                    } else {
+                        ForEach(state.shoppingList?.items ?? [NaverShoppingItem(title: "", link: "", image: "", lprice: "", hprice: "", mallName: "", productId: "", productType: "", brand: "", maker: "", category1: "", category2: "", category3: "", category4: "")], id: \.self) { item in
+                            
+                            VStack {
+                                ZStack(alignment: .bottomTrailing) {
                                     
-                                    Button {
-                                        print("버튼클릭")
-                                    } label: {
-                                        Image(systemName: "heart.fill")
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .frame(width: UIScreen.screenWidth / 2 - 20, height: UIScreen.screenWidth / 2 - 20)
+                                    ZStack(alignment: .center) {
+                                        Circle()
                                             .background(.clear)
-                                            .tint(.black)
+                                            .foregroundColor(.white)
+                                            .frame(width: 32, height: 32)
+                                            .padding(8)
+                                        
+                                        Button {
+                                            print("버튼클릭")
+                                        } label: {
+                                            Image(systemName: "heart.fill")
+                                                .background(.clear)
+                                                .tint(.black)
+                                        }
                                     }
                                 }
+                                
+                                Text(item.mallName)
+                                    .multilineTextAlignment(.leading)
+                                Text(item.title)
+                                Text(item.hprice)
+                                    .bold()
                             }
-                            
-                            Text("월드캠핑카")
-                                .multilineTextAlignment(.leading)
-                            Text("스타리아 2층캠핑카")
-                            Text("1900000")
-                                .bold()
                         }
                     }
                 }

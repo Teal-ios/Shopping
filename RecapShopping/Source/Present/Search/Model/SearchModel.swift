@@ -10,20 +10,22 @@ import Combine
 
 final class SearchModel: ObservableObject, SearchModelStateProtocol {
     
+    @Published var shoppingList: NaverShoppingList?
+    
     var navigationTitle = "상품 검색"
     
     var contentState: SearchTypes.Model.ContentState = .content
-    
-    var searchText = ""
-    
+        
     let routerSubject = SearchRouter.Subjects()
     
     let tabCase: TabCase = .search
+    
 }
 
 extension SearchModel: SearchModelActionsProtocol {
     func fetchShoppingList(contents: NaverShoppingList) {
-        
+        self.shoppingList = contents
+        print(contents, "✅")
     }
     
     func fetchShoppingListError(_ error: NetworkError) {
