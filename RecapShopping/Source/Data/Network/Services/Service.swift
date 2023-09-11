@@ -23,6 +23,8 @@ final class ServiceImpl: Service {
     }
     
     func request<T: Decodable>(target: TargetType, type: T.Type) -> AnyPublisher<T, NetworkError> {
+        print(target.request)
+        print(target.request.url!)
         return session.dataTaskPublisher(for: target.request)
             .tryMap { data, response in
                 guard let httpResponse = response as? HTTPURLResponse else {

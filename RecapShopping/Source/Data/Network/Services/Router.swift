@@ -17,19 +17,19 @@ extension Router: TargetType {
     }
 
     var host: String {
-        return "openapi.naver.com/\(APIKey.verson)"
+        return "openapi.naver.com"
     }
 
     var path: String {
         switch self {
-        case .shopping: return "/search/shop.json"
+        case .shopping: return "/\(APIKey.verson)/search/shop.json"
         }
     }
 
     var queryItems: [URLQueryItem] {
         switch self {
         case .shopping(let parameters):
-            return [URLQueryItem(name: "query", value: parameters.query)]
+            return [URLQueryItem(name: "query", value: parameters.item)]
         }
     }
 

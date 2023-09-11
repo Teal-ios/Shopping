@@ -8,5 +8,5 @@
 import Foundation
 
 struct NaverShoppingQuery: Hashable {
-    let query: String
+    let item: String
 }

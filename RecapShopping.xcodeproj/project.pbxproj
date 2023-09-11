@@ -19,7 +19,9 @@
 		2F761FB22AADC24B00F9D20D /* NaverShoppingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F761FB12AADC24B00F9D20D /* NaverShoppingItem.swift */; };
 		2F761FB42AADC2DC00F9D20D /* NaverShoppingListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F761FB32AADC2DC00F9D20D /* NaverShoppingListDTO.swift */; };
 		2F761FB62AADC2E500F9D20D /* NaverShoppingItemDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F761FB52AADC2E500F9D20D /* NaverShoppingItemDTO.swift */; };
-		2F761FB82AADC43000F9D20D /* SearchRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F761FB72AADC43000F9D20D /* SearchRepositoryImpl.swift */; };
+		2F761FB82AADC43000F9D20D /* ProductSearchRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F761FB72AADC43000F9D20D /* ProductSearchRepositoryImpl.swift */; };
+		2F761FBA2AADC52D00F9D20D /* ProductSearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F761FB92AADC52D00F9D20D /* ProductSearchRepository.swift */; };
+		2F761FBC2AADC70200F9D20D /* ProductSearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F761FBB2AADC70200F9D20D /* ProductSearchUseCase.swift */; };
 		2FF45F822AAD921000B22904 /* RecapShoppingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF45F812AAD921000B22904 /* RecapShoppingApp.swift */; };
 		2FF45F862AAD921100B22904 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FF45F852AAD921100B22904 /* Assets.xcassets */; };
 		2FF45F8A2AAD921100B22904 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FF45F892AAD921100B22904 /* Preview Assets.xcassets */; };
@@ -41,7 +43,9 @@
 		2F761FB12AADC24B00F9D20D /* NaverShoppingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverShoppingItem.swift; sourceTree = "<group>"; };
 		2F761FB32AADC2DC00F9D20D /* NaverShoppingListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverShoppingListDTO.swift; sourceTree = "<group>"; };
 		2F761FB52AADC2E500F9D20D /* NaverShoppingItemDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverShoppingItemDTO.swift; sourceTree = "<group>"; };
-		2F761FB72AADC43000F9D20D /* SearchRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoryImpl.swift; sourceTree = "<group>"; };
+		2F761FB72AADC43000F9D20D /* ProductSearchRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSearchRepositoryImpl.swift; sourceTree = "<group>"; };
+		2F761FB92AADC52D00F9D20D /* ProductSearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSearchRepository.swift; sourceTree = "<group>"; };
+		2F761FBB2AADC70200F9D20D /* ProductSearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSearchUseCase.swift; sourceTree = "<group>"; };
 		2FF45F7E2AAD921000B22904 /* RecapShopping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecapShopping.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FF45F812AAD921000B22904 /* RecapShoppingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecapShoppingApp.swift; sourceTree = "<group>"; };
 		2FF45F852AAD921100B22904 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -178,11 +182,11 @@
 			path = Like;
 			sourceTree = "<group>";
 		};
-		2FF45F982AADA31F00B22904 /* ShoppingDetail */ = {
+		2FF45F982AADA31F00B22904 /* ItemDetail */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = ShoppingDetail;
+			path = ItemDetail;
 			sourceTree = "<group>";
 		};
 		2FF45F992AADA49200B22904 /* Services */ = {
@@ -214,7 +218,7 @@
 				2FF45F952AAD965A00B22904 /* Tab */,
 				2FF45F962AADA2B600B22904 /* Search */,
 				2FF45F972AADA2C400B22904 /* Like */,
-				2FF45F982AADA31F00B22904 /* ShoppingDetail */,
+				2FF45F982AADA31F00B22904 /* ItemDetail */,
 			);
 			path = Present;
 			sourceTree = "<group>";
@@ -281,7 +285,7 @@
 		2FF45FAD2AADB43100B22904 /* RepositoryImpl */ = {
 			isa = PBXGroup;
 			children = (
-				2F761FB72AADC43000F9D20D /* SearchRepositoryImpl.swift */,
+				2F761FB72AADC43000F9D20D /* ProductSearchRepositoryImpl.swift */,
 			);
 			path = RepositoryImpl;
 			sourceTree = "<group>";
@@ -296,6 +300,7 @@
 		2FF45FAF2AADB46D00B22904 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				2F761FBB2AADC70200F9D20D /* ProductSearchUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -303,6 +308,7 @@
 		2FF45FB02AADB47000B22904 /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
+				2F761FB92AADC52D00F9D20D /* ProductSearchRepository.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -394,13 +400,15 @@
 			files = (
 				2FF45FA22AADAC3700B22904 /* SearchView.swift in Sources */,
 				2F761FB22AADC24B00F9D20D /* NaverShoppingItem.swift in Sources */,
-				2F761FB82AADC43000F9D20D /* SearchRepositoryImpl.swift in Sources */,
+				2F761FB82AADC43000F9D20D /* ProductSearchRepositoryImpl.swift in Sources */,
 				2F761FB02AADBF7500F9D20D /* NaverShoppingList.swift in Sources */,
 				2F761FAE2AADBF5E00F9D20D /* NaverShoppingListQuery.swift in Sources */,
 				2FF45F9E2AADA51000B22904 /* MVIContainer.swift in Sources */,
 				2FF45FA02AADABFC00B22904 /* TabView.swift in Sources */,
+				2F761FBC2AADC70200F9D20D /* ProductSearchUseCase.swift in Sources */,
 				2F761FA22AADBCE300F9D20D /* Router.swift in Sources */,
 				2F761FA42AADBCFB00F9D20D /* TargetType.swift in Sources */,
+				2F761FBA2AADC52D00F9D20D /* ProductSearchRepository.swift in Sources */,
 				2F761FB42AADC2DC00F9D20D /* NaverShoppingListDTO.swift in Sources */,
 				2F761FA62AADBD0E00F9D20D /* HTTPMethod.swift in Sources */,
 				2F761FAA2AADBDD700F9D20D /* APIKey.swift in Sources */,

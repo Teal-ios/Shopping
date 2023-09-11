@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 enum TabCase {
     case search
@@ -19,13 +20,23 @@ struct SearchView: View {
     
     let colors: [Color] = [.black, .blue, .brown, .cyan, .gray, .indigo, .mint, .yellow, .orange, .purple]
     
+    let shoppingList = CurrentValueSubject<NaverShoppingList?, NetworkError>(nil)
+    
     let tabCase: TabCase
+    let productSearchUseCase: ProductSearchUseCase
     
     let category: [CategoryModel] = [CategoryModel(title: "정확도", isSelect: true), CategoryModel(title: "날짜순", isSelect: false), CategoryModel(title: "가격높은순", isSelect: false), CategoryModel(title: "가격낮은순", isSelect: false)]
     
     @Binding var searchText: String
     
+    init(tabCase: TabCase, searchText: String, productSearchUseCase: ProductSearchUseCase) {
+        self.productSearchUseCase = productSearchUseCase
+        self.tabCase = tabCase
+        self._searchText = .constant("")
+    }
+    
     var body: some View {
+        var cancellable = Set<AnyCancellable>()
         
         VStack {
             Text("쇼핑 검색")
@@ -95,6 +106,17 @@ struct SearchView: View {
                     .padding()
                 }
                 .frame(height: 24)
+                .onAppear {
+                    self.productSearchUseCase.excute(item: "감자")
+                        .sink { error in
+                            print(error)
+                        } receiveValue: { receive in
+                            print(receive)
+                            self.shoppingList.send(receive)
+                        }
+                        .store(in: &cancellable)
+
+                }
             }
             
             ScrollView {
@@ -141,7 +163,10 @@ struct SearchView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView(tabCase: .search, searchText: .constant("cody"))
+        let service = ServiceImpl.shared
+        let productSearchRepositoryImpl = ProductSearchRepositoryImpl(service: service)
+        let productSearchUseCaseImpl = ProductSearchUseCaseImpl(productSearchRepository: productSearchRepositoryImpl)
+        SearchView(tabCase: .search, searchText: "cody", productSearchUseCase: productSearchUseCaseImpl)
     }
 }
 
