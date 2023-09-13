@@ -12,9 +12,11 @@ import SwiftUI
 protocol SearchModelStateProtocol {
     var contentState: SearchTypes.Model.ContentState { get }
     var navigationTitle: String { get }
+    var itemDTOList: [ItemDTO] { get }
     var routerSubject: SearchRouter.Subjects { get }
     var tabCase: TabCase { get }
     var shoppingList: NaverShoppingList? { get }
+    var loadingState: LoadingState { get }
 }
 
 // MARK: - Intent Actions

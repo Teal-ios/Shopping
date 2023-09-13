@@ -59,6 +59,7 @@ extension SearchIntent: SearchIntentProtocol {
                 guard let self else { return }
                 print(shoppingList)
                 self.model?.fetchShoppingList(contents: shoppingList)
+                
             }
             .store(in: &cancellable)
 

@@ -44,6 +44,10 @@
 		2FE1C6792AAEDC890025C801 /* ItemDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C6782AAEDC890025C801 /* ItemDetailRouter.swift */; };
 		2FE1C67B2AAEDCC10025C801 /* ItemDetailIntentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C67A2AAEDCC10025C801 /* ItemDetailIntentProtocol.swift */; };
 		2FE1C67D2AAEDCE10025C801 /* ItemDetailIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C67C2AAEDCE10025C801 /* ItemDetailIntent.swift */; };
+		2FE1C6802AAFEA030025C801 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C67F2AAFEA030025C801 /* ImageCache.swift */; };
+		2FE1C6892AB14D7A0025C801 /* CasheableImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C6882AB14D7A0025C801 /* CasheableImage.swift */; };
+		2FE1C68D2AB151890025C801 /* ImageCacheError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C68C2AB151890025C801 /* ImageCacheError.swift */; };
+		2FE1C68F2AB181300025C801 /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C68E2AB181300025C801 /* LoadingState.swift */; };
 		2FF45F822AAD921000B22904 /* RecapShoppingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF45F812AAD921000B22904 /* RecapShoppingApp.swift */; };
 		2FF45F862AAD921100B22904 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FF45F852AAD921100B22904 /* Assets.xcassets */; };
 		2FF45F8A2AAD921100B22904 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FF45F892AAD921100B22904 /* Preview Assets.xcassets */; };
@@ -90,6 +94,10 @@
 		2FE1C6782AAEDC890025C801 /* ItemDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailRouter.swift; sourceTree = "<group>"; };
 		2FE1C67A2AAEDCC10025C801 /* ItemDetailIntentProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailIntentProtocol.swift; sourceTree = "<group>"; };
 		2FE1C67C2AAEDCE10025C801 /* ItemDetailIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailIntent.swift; sourceTree = "<group>"; };
+		2FE1C67F2AAFEA030025C801 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		2FE1C6882AB14D7A0025C801 /* CasheableImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasheableImage.swift; sourceTree = "<group>"; };
+		2FE1C68C2AB151890025C801 /* ImageCacheError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheError.swift; sourceTree = "<group>"; };
+		2FE1C68E2AB181300025C801 /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
 		2FF45F7E2AAD921000B22904 /* RecapShopping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecapShopping.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FF45F812AAD921000B22904 /* RecapShoppingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecapShoppingApp.swift; sourceTree = "<group>"; };
 		2FF45F852AAD921100B22904 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -248,6 +256,24 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		2FE1C67E2AAFE9E10025C801 /* DataTransform */ = {
+			isa = PBXGroup;
+			children = (
+				2FE1C6812AAFEC850025C801 /* Image */,
+			);
+			path = DataTransform;
+			sourceTree = "<group>";
+		};
+		2FE1C6812AAFEC850025C801 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				2FE1C67F2AAFEA030025C801 /* ImageCache.swift */,
+				2FE1C6882AB14D7A0025C801 /* CasheableImage.swift */,
+				2FE1C68C2AB151890025C801 /* ImageCacheError.swift */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
 		2FF45F752AAD921000B22904 = {
 			isa = PBXGroup;
 			children = (
@@ -358,8 +384,9 @@
 		2FF45F9A2AADA49700B22904 /* Utilites */ = {
 			isa = PBXGroup;
 			children = (
+				2FE1C67E2AAFE9E10025C801 /* DataTransform */,
 				2FE1C6572AAEB0A10025C801 /* Router */,
-				2FF45FA52AADAD1400B22904 /* Image */,
+				2FF45FA52AADAD1400B22904 /* Extension */,
 				2FF45FA42AADAD0D00B22904 /* Enum */,
 				2FF45F9C2AADA50200B22904 /* MVIContainer */,
 			);
@@ -396,15 +423,16 @@
 		2FF45FA42AADAD0D00B22904 /* Enum */ = {
 			isa = PBXGroup;
 			children = (
+				2FE1C68E2AB181300025C801 /* LoadingState.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
 		};
-		2FF45FA52AADAD1400B22904 /* Image */ = {
+		2FF45FA52AADAD1400B22904 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Image;
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		2FF45FA62AADB08000B22904 /* Data */ = {
@@ -552,6 +580,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FE1C68F2AB181300025C801 /* LoadingState.swift in Sources */,
 				2FE1C6602AAEB0EE0025C801 /* RouterAlertModifier.swift in Sources */,
 				2FE1C6792AAEDC890025C801 /* ItemDetailRouter.swift in Sources */,
 				2FE1C6772AAEDBE90025C801 /* ItemDetailTypes.swift in Sources */,
@@ -561,6 +590,7 @@
 				2F761FB22AADC24B00F9D20D /* NaverShoppingItem.swift in Sources */,
 				2FE1C6682AAEB1540025C801 /* RouterSheetModifier.swift in Sources */,
 				2FE1C6542AAEAEBE0025C801 /* SearchModelProtocol.swift in Sources */,
+				2FE1C68D2AB151890025C801 /* ImageCacheError.swift in Sources */,
 				2FE1C6522AAEAEB60025C801 /* SearchModel.swift in Sources */,
 				2F761FB82AADC43000F9D20D /* ProductSearchRepositoryImpl.swift in Sources */,
 				2FE1C66B2AAED7520025C801 /* ItemDetailView.swift in Sources */,
@@ -578,6 +608,7 @@
 				2F761FA22AADBCE300F9D20D /* Router.swift in Sources */,
 				2FE1C64D2AAEAD300025C801 /* SearchView+Build.swift in Sources */,
 				2F761FA42AADBCFB00F9D20D /* TargetType.swift in Sources */,
+				2FE1C6802AAFEA030025C801 /* ImageCache.swift in Sources */,
 				2F761FBA2AADC52D00F9D20D /* ProductSearchRepository.swift in Sources */,
 				2FE1C64F2AAEAD660025C801 /* SearchTypes.swift in Sources */,
 				2F761FB42AADC2DC00F9D20D /* NaverShoppingListDTO.swift in Sources */,
@@ -588,6 +619,7 @@
 				2FF45FAA2AADB2AB00B22904 /* CategoryModel.swift in Sources */,
 				2FF45F822AAD921000B22904 /* RecapShoppingApp.swift in Sources */,
 				2FE1C6702AAEDB8F0025C801 /* ItemDetailModel.swift in Sources */,
+				2FE1C6892AB14D7A0025C801 /* CasheableImage.swift in Sources */,
 				2FE1C65B2AAEB0AE0025C801 /* RouterScreenProtocol.swift in Sources */,
 				2F761FA02AADBCB200F9D20D /* Service.swift in Sources */,
 				2F761FA82AADBD2400F9D20D /* NetworkError.swift in Sources */,
