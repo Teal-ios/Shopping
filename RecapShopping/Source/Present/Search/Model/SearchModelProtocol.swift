@@ -17,6 +17,7 @@ protocol SearchModelStateProtocol {
     var tabCase: TabCase { get }
     var shoppingList: NaverShoppingList? { get }
     var loadingState: LoadingState { get }
+    var category: [CategoryModel] { get }
 }
 
 // MARK: - Intent Actions

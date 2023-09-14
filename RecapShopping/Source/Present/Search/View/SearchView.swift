@@ -22,9 +22,7 @@ struct SearchView: View {
     
     let rows = [GridItem(.flexible()), GridItem(.flexible())]
     let categoryLayout = [GridItem(.flexible())]
-    
-    let category: [CategoryModel] = [CategoryModel(title: "정확도", isSelect: true), CategoryModel(title: "날짜순", isSelect: false), CategoryModel(title: "가격높은순", isSelect: false), CategoryModel(title: "가격낮은순", isSelect: false)]
-    
+        
     @State var searchText: String = ""
     
     var body: some View {
@@ -41,26 +39,30 @@ private extension SearchView {
         return VStack {
             Text("쇼핑 검색")
                 .bold()
+                .foregroundColor(Color.white)
             textFieldView()
             if container.model.tabCase == .search {
                 ScrollView(.horizontal) {
                     HStack {
-                        ForEach(category, id: \.id) { category in
-                            Button {
-                                print("카테고리클릭")
-                            } label: {
-                                if category.isSelect == true {
+                        ForEach(state.category, id: \.self) { category in
+                            if category.isSelect == true {
+                                Button {
+                                    print("카테고리클릭")
+                                } label: {
                                     Text(category.title)
-                                        .background(Color.white)
                                         .frame(height: 32)
                                         .foregroundColor(.black)
                                         .overlay(
                                             RoundedRectangle(cornerRadius: 8)
                                                 .stroke(Color.gray,lineWidth:1)
                                         )
-                                    
-                                    
-                                } else {
+                                }
+                                .background(Color.white)
+                                .cornerRadius(8)
+                            } else {
+                                Button {
+                                    print("카테고리클릭")
+                                } label: {
                                     Text(category.title)
                                         .foregroundColor(.gray)
                                         .frame(height: 32)
@@ -92,20 +94,23 @@ extension SearchView {
             ZStack {
                 
                 TextField("검색어를 입력하세요", text: $searchText)
-                    .padding()
-                    .padding(.horizontal, 25)
-                    .background(Color.gray)
+                    .frame(height: 36)
+                    .padding(.horizontal, 40)
+                    .background(Color(uiColor: UIColor(red: 28/255, green: 28/255, blue: 31/255, alpha: 1.0)))
                     .cornerRadius(8)
                     .keyboardType(.default)
                     .onSubmit {
                         intent.searchTextToIntent(text: searchText)
                         intent.searchKeyboardButtonTapped()
                     }
+                    .foregroundColor(Color.white)
+                
                 
                 
                 HStack {
                     Image(systemName: "magnifyingglass")
                         .padding([.leading])
+                        .foregroundColor(Color(uiColor: UIColor.lightGray))
                     
                     Spacer()
                     
@@ -114,8 +119,8 @@ extension SearchView {
                     } label: {
                         Image(systemName: "x.circle.fill")
                     }
-                    .foregroundColor(.black)
                     .padding([.trailing])
+                    .foregroundColor(Color(uiColor: UIColor.lightGray))
                 }
             }
             Button("취소") {
@@ -138,7 +143,7 @@ extension SearchView {
                     ForEach(state.itemDTOList, id: \.self) { item in
                         VStack {
                             ZStack(alignment: .bottomTrailing) {
-                                 
+                                
                                 Image(uiImage: item.image)
                                     .resizable()
                                     .frame(width: UIScreen.screenWidth / 2 - 20, height: UIScreen.screenWidth / 2 - 20)
@@ -155,9 +160,15 @@ extension SearchView {
                                     Button {
                                         print("버튼클릭")
                                     } label: {
-                                        Image(systemName: "heart.fill")
-                                            .background(.clear)
-                                            .tint(.black)
+                                        if item.isSelected {
+                                            Image(systemName: "heart.fill")
+                                                .background(.clear)
+                                                .tint(.black)
+                                        } else {
+                                            Image(systemName: "heart")
+                                                .background(.clear)
+                                                .tint(.black)
+                                        }
                                     }
                                 }
                             }
@@ -185,8 +196,3 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-extension UIScreen {
-    static let screenWidth = UIScreen.main.bounds.size.width
-    static let screenHeight = UIScreen.main.bounds.size.height
-    static let screenSize = UIScreen.main.bounds.size
-}

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 import Combine
 
 struct ItemDTO: Hashable {
@@ -23,6 +24,7 @@ struct ItemDTO: Hashable {
     let category2: String
     let category3: String
     let category4: String
+    let isSelected: Bool
 }
 
 final class SearchModel: ObservableObject, SearchModelStateProtocol {
@@ -32,6 +34,8 @@ final class SearchModel: ObservableObject, SearchModelStateProtocol {
     @Published var itemDTOList: [ItemDTO] = []
     
     @Published var loadingState: LoadingState = .loading // 로딩 상태 초기값 설정
+    
+    @Published var category: [CategoryModel] = [CategoryModel(title: "정확도", isSelect: true), CategoryModel(title: "날짜순", isSelect: false), CategoryModel(title: "가격높은순", isSelect: false), CategoryModel(title: "가격낮은순", isSelect: false)]
     
     var navigationTitle = "상품 검색"
     
@@ -70,7 +74,9 @@ extension SearchModel: SearchModelActionsProtocol {
                     return UIImage(data: data)
                 }
                 .map { image in
-                    return ItemDTO(title: item.title, link: item.link, image: image, lprice: item.lprice, hprice: item.hprice, mallName: item.mallName, productId: item.productId, productType: item.productType, brand: item.brand, maker: item.maker, category1: item.category1, category2: item.category2, category3: item.category3, category4: item.category4)
+                    let filterTitle = item.title.replacingOccurrences(of: "<b>", with: "")
+                    let secondFilterTitle = filterTitle.replacingOccurrences(of: "</b>", with: "")
+                    return ItemDTO(title: secondFilterTitle, link: item.link, image: image, lprice: item.lprice, hprice: item.hprice, mallName: item.mallName, productId: item.productId, productType: item.productType, brand: item.brand, maker: item.maker, category1: item.category1, category2: item.category2, category3: item.category3, category4: item.category4, isSelected: false)
                 }
         })
         .collect()

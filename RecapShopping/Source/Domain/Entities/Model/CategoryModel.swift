@@ -7,8 +7,7 @@
 
 import Foundation
 
-struct CategoryModel: Identifiable {
+struct CategoryModel: Hashable {
     let title: String
     let isSelect: Bool
-    let id = UUID()
 }
