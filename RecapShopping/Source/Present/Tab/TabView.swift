@@ -10,12 +10,12 @@ import SwiftUI
 struct TabbarView: View {
     var body: some View {
         TabView {
-            SearchView.build(data: .init())
+            SearchView.build(data: .init(tabCase: .search))
               .tabItem {
                 Image(systemName: "magnifyingglass")
                   Text("검색")
               }
-            SearchView.build(data: .init())
+            SearchView.build(data: .init(tabCase: .like))
               .tabItem {
                 Image(systemName: "heart")
                 Text("좋아요")

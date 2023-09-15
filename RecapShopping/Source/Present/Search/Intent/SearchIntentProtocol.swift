@@ -13,4 +13,5 @@ protocol SearchIntentProtocol {
     func searchTextToIntent(text: String)
     func likeButtonTapped(item: RefineItem)
     func categoryButtonTapped(category: CategoryModel)
+    func likeDeleteButtonTapped(item: RefineItem)
 }

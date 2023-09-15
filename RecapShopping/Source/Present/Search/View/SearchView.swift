@@ -155,19 +155,31 @@ extension SearchView {
                                         .foregroundColor(.white)
                                         .frame(width: 32, height: 32)
                                         .padding(8)
-                                    
-                                    Button {
-                                        intent.likeButtonTapped(item: item)
-                                    } label: {
-                                        if item.isSelected {
+                                    if state.tabCase == .search {
+                                        Button {
+                                            intent.likeButtonTapped(item: item)
+                                        } label: {
+                                            if item.isSelected {
+                                                Image(systemName: "heart.fill")
+                                                    .background(.clear)
+                                                    .tint(.black)
+                                            } else {
+                                                Image(systemName: "heart")
+                                                    .background(.clear)
+                                                    .tint(.black)
+                                            }
+                                        }
+                                    } else {
+                                        Button {
+                                            intent.likeDeleteButtonTapped(item: item)
+                                            
+                                        } label: {
                                             Image(systemName: "heart.fill")
                                                 .background(.clear)
                                                 .tint(.black)
-                                        } else {
-                                            Image(systemName: "heart")
-                                                .background(.clear)
-                                                .tint(.black)
+                                            
                                         }
+                                        
                                     }
                                 }
                             }
@@ -191,7 +203,7 @@ extension SearchView {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         
-        SearchView.build(data: .init())
+        SearchView.build(data: .init(tabCase: .search))
     }
 }
 

@@ -23,6 +23,10 @@ protocol SearchModelStateProtocol {
 protocol SearchModelActionsProtocol: AnyObject {
     func fetchShoppingList(contents: [RefineItem])
     func fetchShoppingListError(_ error: NetworkError)
+    func setupScreen(tabCase: TabCase)
+    func setupScreenData(tabCase: TabCase, data: [RefineItem])
+    func deleteItemToLikeTab(item: RefineItem)
+    func networkResponseDataFetchToModel(data: [RefineItem])
 }
 
 // MARK: - Router
