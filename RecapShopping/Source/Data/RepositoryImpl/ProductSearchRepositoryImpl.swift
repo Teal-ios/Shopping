@@ -51,7 +51,7 @@ final class ProductSearchRepositoryImpl: ProductSearchRepository {
     }
     
     func loadImage(item: NaverShoppingListDTO) -> AnyPublisher<[RefineItem], Error> {
-        let publishers = item.items.map { itemDTO in
+        let publishers = item.items.flatMap { itemDTO in
             DefaultImageCacheService.shared.setImage(itemDTO.image)
                 .compactMap { data in
                     return data

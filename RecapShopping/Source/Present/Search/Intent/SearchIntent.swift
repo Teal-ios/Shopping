@@ -55,6 +55,15 @@ extension SearchIntent: SearchIntentProtocol {
     
     func viewOnAppear() {
         print("✅✅✅",Realm.Configuration.defaultConfiguration.fileURL!)
+        model?.setupScreen(tabCase: externalData.tabCase)
+        refineDataBaseUseCase.load()
+            .sink { error in
+                print(error)
+            } receiveValue: { [weak self] itemList in
+                guard let self else { return }
+                model?.setupScreenData(tabCase: externalData.tabCase, data: itemList)
+            }
+            .store(in: &self.cancellable)
     }
     
     func likeButtonTapped(item: RefineItem) {
@@ -64,6 +73,7 @@ extension SearchIntent: SearchIntentProtocol {
                 ele.isSelected.toggle()
             }
         }
+        
         if searchList.count != 0 {
             self.model?.fetchShoppingList(contents: searchList)
         }
@@ -99,6 +109,11 @@ extension SearchIntent: SearchIntentProtocol {
 
     }
     
+    func likeDeleteButtonTapped(item: RefineItem) {
+        self.refineDataBaseUseCase.delete(with: item)
+        model?.deleteItemToLikeTab(item: item)
+    }
+    
     func categoryButtonTapped(category: CategoryModel) {
         print("카테고리클릭")
     }
@@ -125,6 +140,7 @@ extension SearchIntent: SearchIntentProtocol {
                             }
                             self.model?.fetchShoppingList(contents: shoppingList)
                             self.searchList = shoppingList
+                            self.model?.networkResponseDataFetchToModel(data: shoppingList)
                         }
                         .store(in: &cancellable)
                 }
@@ -137,5 +153,7 @@ extension SearchIntent: SearchIntentProtocol {
 // MARK: - Helper classes
 
 extension SearchTypes.Intent {
-    struct ExternalData { }
+    struct ExternalData {
+        let tabCase: TabCase
+    }
 }

@@ -22,7 +22,8 @@ final class ProductSearchUseCaseImpl: ProductSearchUseCase {
     }
     
     func excute(item: String) -> AnyPublisher<[RefineItem], NetworkError> {
-        return Future<[RefineItem], NetworkError> { promiss in
+        return Future<[RefineItem], NetworkError> { [weak self] promiss in
+            guard let self else { return }
             self.productSearchRepository.fetchShoppingList(item: item)
                 .sink { completion in
 
