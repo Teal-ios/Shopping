@@ -5,7 +5,7 @@
 //  Created by 이병현 on 2023/09/10.
 //
 
-import Foundation
+import UIKit
 
 struct NaverShoppingItem: Hashable {
     let title: String

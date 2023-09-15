@@ -19,16 +19,9 @@ struct SearchView: View {
     
     private var intent: SearchIntentProtocol { container.intent }
     private var state: SearchModelStateProtocol { container.model }
-
-        
+    
     let rows = [GridItem(.flexible()), GridItem(.flexible())]
     let categoryLayout = [GridItem(.flexible())]
-    
-    let colors: [Color] = [.black, .blue, .brown, .cyan, .gray, .indigo, .mint, .yellow, .orange, .purple]
-    
-    let shoppingList = CurrentValueSubject<NaverShoppingList?, NetworkError>(nil)
-            
-    let category: [CategoryModel] = [CategoryModel(title: "정확도", isSelect: true), CategoryModel(title: "날짜순", isSelect: false), CategoryModel(title: "가격높은순", isSelect: false), CategoryModel(title: "가격낮은순", isSelect: false)]
     
     @State var searchText: String = ""
     
@@ -37,65 +30,39 @@ struct SearchView: View {
             .onAppear(perform: intent.viewOnAppear)
             .navigationBarTitle(state.navigationTitle, displayMode: .inline)
             .modifier(SearchRouter(subjects: state.routerSubject, intent: intent))
+            .foregroundColor(.black)
     }
 }
 
 private extension SearchView {
     func bodyView() -> some View {
-        var cancellable = Set<AnyCancellable>()
         return VStack {
             Text("쇼핑 검색")
                 .bold()
-            HStack {
-                ZStack {
-                    
-                    TextField("검색어를 입력하세요", text: $searchText)
-                        .padding()
-                        .padding(.horizontal, 25)
-                        .background(Color.gray)
-                        .cornerRadius(8)
-                        
-                    
-                    HStack {
-                        Image(systemName: "magnifyingglass")
-                            .padding([.leading])
-                        
-                        Spacer()
-                        
-                        Button {
-                            print("button")
-                        } label: {
-                            Image(systemName: "x.circle.fill")
-                        }
-                        .foregroundColor(.black)
-                        .padding([.trailing])
-                    }
-                }
-                Button("취소") {
-                    print("취소")
-                }
-                .foregroundColor(.black)
-            }
-            .padding()
+                .foregroundColor(Color.white)
+            textFieldView()
             if container.model.tabCase == .search {
                 ScrollView(.horizontal) {
                     HStack {
-                        ForEach(category, id: \.id) { category in
-                            Button {
-                                print("카테고리클릭")
-                            } label: {
-                                if category.isSelect == true {
+                        ForEach(state.category, id: \.self) { category in
+                            if category.isSelect == true {
+                                Button {
+                                    print("이미 클릭된 카테고리")
+                                } label: {
                                     Text(category.title)
-                                        .background(Color.white)
                                         .frame(height: 32)
                                         .foregroundColor(.black)
                                         .overlay(
                                             RoundedRectangle(cornerRadius: 8)
                                                 .stroke(Color.gray,lineWidth:1)
-                                          )
-                                    
-                                    
-                                } else {
+                                        )
+                                }
+                                .background(Color.white)
+                                .cornerRadius(8)
+                            } else {
+                                Button {
+                                    intent.categoryButtonTapped(category: category)
+                                } label: {
                                     Text(category.title)
                                         .foregroundColor(.gray)
                                         .frame(height: 32)
@@ -103,7 +70,7 @@ private extension SearchView {
                                         .overlay(
                                             RoundedRectangle(cornerRadius: 8)
                                                 .stroke(Color.gray,lineWidth:1)
-                                          )
+                                        )
                                 }
                             }
                         }
@@ -113,17 +80,75 @@ private extension SearchView {
                 .frame(height: 24)
             }
             
-            ScrollView {
+            shoppingListScrollerView()
+                .background(Color.black)
+        }
+        .background(Color.black)
+    }
+}
+
+extension SearchView {
+    func textFieldView() -> some View {
+        
+        return HStack {
+            ZStack {
                 
-                LazyVGrid(columns: rows) {
-                    ForEach(colors, id: \.self) { color in
-                        
+                TextField("검색어를 입력하세요", text: $searchText)
+                    .frame(height: 36)
+                    .padding(.horizontal, 40)
+                    .background(Color(uiColor: UIColor(red: 28/255, green: 28/255, blue: 31/255, alpha: 1.0)))
+                    .cornerRadius(8)
+                    .keyboardType(.default)
+                    .onSubmit {
+                        intent.searchTextToIntent(text: searchText)
+                        intent.searchKeyboardButtonTapped()
+                    }
+                    .foregroundColor(Color.white)
+                
+                
+                
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                        .padding([.leading])
+                        .foregroundColor(Color(uiColor: UIColor.lightGray))
+                    
+                    Spacer()
+                    
+                    Button {
+                        self.searchText = ""
+                    } label: {
+                        Image(systemName: "x.circle.fill")
+                    }
+                    .padding([.trailing])
+                    .foregroundColor(Color(uiColor: UIColor.lightGray))
+                }
+            }
+            Button("취소") {
+                self.searchText = ""
+            }
+            .foregroundColor(.white)
+        }
+        .padding()
+    }
+}
+
+extension SearchView {
+    func shoppingListScrollerView() -> some View {
+        ScrollView {
+            LazyVGrid(columns: rows) {
+                if state.refineItemList.count == 0 {
+                    
+                } else {
+                    ForEach(state.refineItemList, id: \.self.productId) { item in
                         VStack {
                             ZStack(alignment: .bottomTrailing) {
                                 
-                                RoundedRectangle(cornerRadius: 10)
+                                Image(uiImage: UIImage(data: item.image) ?? UIImage())
+                                    .resizable()
                                     .frame(width: UIScreen.screenWidth / 2 - 20, height: UIScreen.screenWidth / 2 - 20)
-                                    .foregroundColor(color)
+                                    .clipped()
+                                    .cornerRadius(10)
+                                
                                 ZStack(alignment: .center) {
                                     Circle()
                                         .background(.clear)
@@ -132,29 +157,37 @@ private extension SearchView {
                                         .padding(8)
                                     
                                     Button {
-                                        print("버튼클릭")
+                                        intent.likeButtonTapped(item: item)
                                     } label: {
-                                        Image(systemName: "heart.fill")
-                                            .background(.clear)
-                                            .tint(.black)
+                                        if item.isSelected {
+                                            Image(systemName: "heart.fill")
+                                                .background(.clear)
+                                                .tint(.black)
+                                        } else {
+                                            Image(systemName: "heart")
+                                                .background(.clear)
+                                                .tint(.black)
+                                        }
                                     }
                                 }
                             }
                             
-                            Text("월드캠핑카")
-                                .multilineTextAlignment(.leading)
-                            Text("스타리아 2층캠핑카")
-                            Text("1900000")
+                            Text("[\(item.mallName)]")
+                                .foregroundColor(Color.gray)
+                            Text(item.title)
+                                .foregroundColor(Color.white)
+                                .lineLimit(2)
+                            Text(item.lprice)
                                 .bold()
+                                .foregroundColor(Color.white)
                         }
                     }
                 }
             }
-            .padding()
         }
+        .padding()
     }
 }
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         
@@ -162,8 +195,3 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-extension UIScreen {
-    static let screenWidth = UIScreen.main.bounds.size.width
-    static let screenHeight = UIScreen.main.bounds.size.height
-    static let screenSize = UIScreen.main.bounds.size
-}

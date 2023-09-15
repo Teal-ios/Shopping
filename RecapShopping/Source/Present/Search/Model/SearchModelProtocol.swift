@@ -11,15 +11,17 @@ import SwiftUI
 
 protocol SearchModelStateProtocol {
     var contentState: SearchTypes.Model.ContentState { get }
-    var searchText: String { get }
     var navigationTitle: String { get }
+    var refineItemList: [RefineItem] { get }
     var routerSubject: SearchRouter.Subjects { get }
     var tabCase: TabCase { get }
+    var loadingState: LoadingState { get }
+    var category: [CategoryModel] { get }
 }
 
 // MARK: - Intent Actions
 protocol SearchModelActionsProtocol: AnyObject {
-    func fetchShoppingList(contents: NaverShoppingList)
+    func fetchShoppingList(contents: [RefineItem])
     func fetchShoppingListError(_ error: NetworkError)
 }
 

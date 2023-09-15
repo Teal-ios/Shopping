@@ -12,7 +12,7 @@ struct TabbarView: View {
         TabView {
             SearchView.build(data: .init())
               .tabItem {
-                Image(systemName: "1.square.fill")
+                Image(systemName: "magnifyingglass")
                   Text("검색")
               }
             SearchView.build(data: .init())
@@ -21,6 +21,7 @@ struct TabbarView: View {
                 Text("좋아요")
               }
         }
+        .tint(Color.white)
     }
 }
 

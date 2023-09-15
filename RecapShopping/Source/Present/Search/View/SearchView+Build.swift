@@ -14,7 +14,9 @@ extension SearchView {
         let service = ServiceImpl.shared
         let productRepositoryImpl = ProductSearchRepositoryImpl(service: service)
         let productUseCaseImpl = ProductSearchUseCaseImpl(productSearchRepository: productRepositoryImpl)
-        let intent = SearchIntent(model: model, externalData: data, productShoppingUseCase: productUseCaseImpl)
+        let refineRepositoryImpl = RefineItemDataBaseRepositoryImpl()
+        let refineUseCaseImpl = RefineItemDataBaseUseCaseImpl(refineItemDataBaseRepository: refineRepositoryImpl)
+        let intent = SearchIntent(model: model, externalData: data, productShoppingUseCase: productUseCaseImpl, refineDataBaseUseCase: refineUseCaseImpl)
         let container = MVIContainer(
             intent: intent as SearchIntentProtocol,
             model: model as SearchModelStateProtocol,
