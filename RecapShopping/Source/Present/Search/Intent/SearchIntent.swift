@@ -58,6 +58,16 @@ extension SearchIntent: SearchIntentProtocol {
     }
     
     func likeButtonTapped(item: RefineItem) {
+        
+        for ele in searchList {
+            if ele.productId == item.productId {
+                ele.isSelected.toggle()
+            }
+        }
+        if searchList.count != 0 {
+            self.model?.fetchShoppingList(contents: searchList)
+        }
+        
         refineDataBaseUseCase.load()
             .sink { error in
                 print(error)
@@ -84,9 +94,6 @@ extension SearchIntent: SearchIntentProtocol {
                         }
                     }
                 }
-                
-                self.model?.fetchShoppingList(contents: searchList)
-
             }
             .store(in: &cancellable)
 
@@ -104,21 +111,23 @@ extension SearchIntent: SearchIntentProtocol {
             } receiveValue: { [weak self] shoppingList in
                 guard let self else { return }
                 print(shoppingList)
-                refineDataBaseUseCase.load()
-                    .sink { error in
-                        print(error)
-                    } receiveValue: { refineList in
-                        for dbItem in refineList {
-                            for responseItem in shoppingList {
-                                if dbItem.productId == responseItem.productId {
-                                    responseItem.isSelected = true
+                if !shoppingList.isEmpty {
+                    refineDataBaseUseCase.load()
+                        .sink { error in
+                            print(error)
+                        } receiveValue: { refineList in
+                            for dbItem in refineList {
+                                for responseItem in shoppingList {
+                                    if dbItem.productId == responseItem.productId {
+                                        responseItem.isSelected = true
+                                    }
                                 }
                             }
+                            self.model?.fetchShoppingList(contents: shoppingList)
+                            self.searchList = shoppingList
                         }
-                        self.model?.fetchShoppingList(contents: shoppingList)
-                        self.searchList = shoppingList
-                    }
-                    .store(in: &cancellable)
+                        .store(in: &cancellable)
+                }
             }
             .store(in: &cancellable)
 
