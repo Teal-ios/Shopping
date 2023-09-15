@@ -32,9 +32,8 @@ extension SearchModel: SearchModelActionsProtocol {
     func fetchShoppingList(contents: [RefineItem]) {
         self.refineItemList = []
         for ele in contents {
-            let filterTitle = ele.title.replacingOccurrences(of: "<b>", with: "")
-            let secondFilterTitle = filterTitle.replacingOccurrences(of: "</b>", with: "")
-            self.refineItemList.append(RefineItem(title: secondFilterTitle, image: ele.image, imageURL: ele.imageURL, lprice: ele.lprice, mallName: ele.mallName, productId: ele.productId, isSelected: ele.isSelected))
+
+            self.refineItemList.append(RefineItem(title: ele.title, image: ele.image, imageURL: ele.imageURL, lprice: ele.lprice, mallName: ele.mallName, productId: ele.productId, isSelected: ele.isSelected))
         }
         print(contents, "✅")
     }
@@ -42,42 +41,6 @@ extension SearchModel: SearchModelActionsProtocol {
     func fetchShoppingListError(_ error: NetworkError) {
         contentState = .error(error: error)
     }
-    
-    //    func loadImage(items: [RefineItem]) {
-    //        self.refineItemList = []
-    //        Publishers.MergeMany(items.map { item in
-    //            DefaultImageCacheService.shared.setImage(item.imageURL)
-    //                .mapError { error in
-    //                    print("Image loading error: \(error)")
-    //                    self.loadingState = .failure // 실패 상태 설정
-    //                    return error
-    //                }
-    //                .compactMap { data in
-    //                    print(data, "🐕")
-    //                    return data
-    //                }
-    //                .map { image in
-    //                    let filterTitle = item.title.replacingOccurrences(of: "<b>", with: "")
-    //                    let secondFilterTitle = filterTitle.replacingOccurrences(of: "</b>", with: "")
-    //                    return RefineItem(title: secondFilterTitle, image: image, lprice: item.lprice, mallName: item.mallName, productId: item.productId, isSelected: false)
-    //                }
-    //        })
-    //        .collect()
-    //        .sink(receiveCompletion: { completion in
-    //            switch completion {
-    //            case .finished:
-    //                break
-    //            case .failure(let error):
-    //                print("Image loading error: \(error)")
-    //                self.loadingState = .failure // 실패 상태 설정
-    //            }
-    //        }) { itemDTOs in
-    //            self.refineItemList.append(contentsOf: itemDTOs)
-    //            self.loadingState = .success // 성공 상태 설정
-    //        }
-    //        .store(in: &self.cancellables)
-    //    }
-    
 }
 
 extension SearchModel: SearchModelRouterProtocol {

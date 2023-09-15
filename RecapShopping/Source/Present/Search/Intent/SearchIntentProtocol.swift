@@ -11,4 +11,6 @@ protocol SearchIntentProtocol {
     func viewOnAppear()
     func searchKeyboardButtonTapped()
     func searchTextToIntent(text: String)
+    func likeButtonTapped(item: RefineItem)
+    func categoryButtonTapped(category: CategoryModel)
 }

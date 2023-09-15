@@ -31,30 +31,6 @@ final class ItemRealmDTO: Object {
 extension ItemRealmDTO {
     var toDoamin: RefineItem {
         var itemImage = Data()
-        var cancellables = Set<AnyCancellable>()
-        Publishers.MergeMany(
-            DefaultImageCacheService.shared.setImage(imageURL)
-                .mapError { error in
-                    print("Image loading error: \(error)")
-                    return error
-                }
-                .compactMap { data in
-                    print(data, "🐕")
-                    return data
-                }
-        )
-        .collect()
-        .sink(receiveCompletion: { completion in
-            switch completion {
-            case .finished:
-                break
-            case .failure(let error):
-                print("Image loading error: \(error)")
-            }
-        }) { itemDTOs in
-            itemImage = itemDTOs[0]
-        }
-        .store(in: &cancellables)
         return RefineItem(title: title, image: itemImage, imageURL: imageURL, lprice: lprice, mallName: mallName, productId: productId, isSelected: isSelected)
     }
 }

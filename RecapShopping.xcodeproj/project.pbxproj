@@ -27,6 +27,9 @@
 		2F7721222AB2E1CF0091DA91 /* RealmStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7721212AB2E1CF0091DA91 /* RealmStorage.swift */; };
 		2F7721242AB2E24A0091DA91 /* ItemRealmDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7721232AB2E24A0091DA91 /* ItemRealmDTO.swift */; };
 		2F7721262AB2E7D20091DA91 /* RefineItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7721252AB2E7D20091DA91 /* RefineItem.swift */; };
+		2FE08E302AB3EF170062138C /* RefineItemDataBaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE08E2F2AB3EF170062138C /* RefineItemDataBaseRepository.swift */; };
+		2FE08E322AB3EF520062138C /* RefineItemDataBaseRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE08E312AB3EF520062138C /* RefineItemDataBaseRepositoryImpl.swift */; };
+		2FE08E342AB3F0090062138C /* Realm+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE08E332AB3F0090062138C /* Realm+Ex.swift */; };
 		2FE1C6472AAEAB670025C801 /* SearchIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C6462AAEAB670025C801 /* SearchIntent.swift */; };
 		2FE1C6492AAEAB6E0025C801 /* SearchIntentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C6482AAEAB6E0025C801 /* SearchIntentProtocol.swift */; };
 		2FE1C64D2AAEAD300025C801 /* SearchView+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1C64C2AAEAD300025C801 /* SearchView+Build.swift */; };
@@ -81,6 +84,9 @@
 		2F7721212AB2E1CF0091DA91 /* RealmStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStorage.swift; sourceTree = "<group>"; };
 		2F7721232AB2E24A0091DA91 /* ItemRealmDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRealmDTO.swift; sourceTree = "<group>"; };
 		2F7721252AB2E7D20091DA91 /* RefineItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefineItem.swift; sourceTree = "<group>"; };
+		2FE08E2F2AB3EF170062138C /* RefineItemDataBaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefineItemDataBaseRepository.swift; sourceTree = "<group>"; };
+		2FE08E312AB3EF520062138C /* RefineItemDataBaseRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefineItemDataBaseRepositoryImpl.swift; sourceTree = "<group>"; };
+		2FE08E332AB3F0090062138C /* Realm+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+Ex.swift"; sourceTree = "<group>"; };
 		2FE1C6462AAEAB670025C801 /* SearchIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchIntent.swift; sourceTree = "<group>"; };
 		2FE1C6482AAEAB6E0025C801 /* SearchIntentProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchIntentProtocol.swift; sourceTree = "<group>"; };
 		2FE1C64C2AAEAD300025C801 /* SearchView+Build.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchView+Build.swift"; sourceTree = "<group>"; };
@@ -459,6 +465,7 @@
 			isa = PBXGroup;
 			children = (
 				2F7721142AB2DF4C0091DA91 /* UIScreen+Ex.swift */,
+				2FE08E332AB3F0090062138C /* Realm+Ex.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -496,6 +503,7 @@
 			isa = PBXGroup;
 			children = (
 				2F761FB72AADC43000F9D20D /* ProductSearchRepositoryImpl.swift */,
+				2FE08E312AB3EF520062138C /* RefineItemDataBaseRepositoryImpl.swift */,
 			);
 			path = RepositoryImpl;
 			sourceTree = "<group>";
@@ -521,6 +529,7 @@
 			isa = PBXGroup;
 			children = (
 				2F761FB92AADC52D00F9D20D /* ProductSearchRepository.swift */,
+				2FE08E2F2AB3EF170062138C /* RefineItemDataBaseRepository.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -611,6 +620,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FE08E302AB3EF170062138C /* RefineItemDataBaseRepository.swift in Sources */,
 				2FE1C68F2AB181300025C801 /* LoadingState.swift in Sources */,
 				2FE1C6602AAEB0EE0025C801 /* RouterAlertModifier.swift in Sources */,
 				2FE1C6792AAEDC890025C801 /* ItemDetailRouter.swift in Sources */,
@@ -634,6 +644,7 @@
 				2F761FAE2AADBF5E00F9D20D /* NaverShoppingListQuery.swift in Sources */,
 				2FF45F9E2AADA51000B22904 /* MVIContainer.swift in Sources */,
 				2FE1C6592AAEB0A80025C801 /* RouterProtocol.swift in Sources */,
+				2FE08E322AB3EF520062138C /* RefineItemDataBaseRepositoryImpl.swift in Sources */,
 				2FF45FA02AADABFC00B22904 /* TabView.swift in Sources */,
 				2FE1C6622AAEB10A0025C801 /* RouterCloseModifier.swift in Sources */,
 				2F761FBC2AADC70200F9D20D /* ProductSearchUseCase.swift in Sources */,
@@ -643,6 +654,7 @@
 				2F761FA22AADBCE300F9D20D /* Router.swift in Sources */,
 				2FE1C64D2AAEAD300025C801 /* SearchView+Build.swift in Sources */,
 				2F761FA42AADBCFB00F9D20D /* TargetType.swift in Sources */,
+				2FE08E342AB3F0090062138C /* Realm+Ex.swift in Sources */,
 				2FE1C6802AAFEA030025C801 /* ImageCache.swift in Sources */,
 				2F761FBA2AADC52D00F9D20D /* ProductSearchRepository.swift in Sources */,
 				2FE1C64F2AAEAD660025C801 /* SearchTypes.swift in Sources */,

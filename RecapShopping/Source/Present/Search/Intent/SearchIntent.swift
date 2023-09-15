@@ -50,6 +50,14 @@ extension SearchIntent: SearchIntentProtocol {
         print("뷰뜸")
     }
     
+    func likeButtonTapped(item: RefineItem) {
+        print("버튼클릭")
+    }
+    
+    func categoryButtonTapped(category: CategoryModel) {
+        print("카테고리클릭")
+    }
+    
     func searchKeyboardButtonTapped() {
         productShoppingUseCase.excute(item: text)
             .sink { [weak self] error in

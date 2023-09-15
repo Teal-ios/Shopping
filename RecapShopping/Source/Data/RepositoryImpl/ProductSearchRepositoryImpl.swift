@@ -12,7 +12,6 @@ final class ProductSearchRepositoryImpl: ProductSearchRepository {
     
     private let service: Service
     private var anyCancellable = Set<AnyCancellable>()
-    var arr: [RefineItem] = []
     
     init(service: Service) {
         self.service = service

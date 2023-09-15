@@ -47,7 +47,7 @@ private extension SearchView {
                         ForEach(state.category, id: \.self) { category in
                             if category.isSelect == true {
                                 Button {
-                                    print("카테고리클릭")
+                                    print("이미 클릭된 카테고리")
                                 } label: {
                                     Text(category.title)
                                         .frame(height: 32)
@@ -61,7 +61,7 @@ private extension SearchView {
                                 .cornerRadius(8)
                             } else {
                                 Button {
-                                    print("카테고리클릭")
+                                    intent.categoryButtonTapped(category: category)
                                 } label: {
                                     Text(category.title)
                                         .foregroundColor(.gray)
@@ -115,7 +115,7 @@ extension SearchView {
                     Spacer()
                     
                     Button {
-                        print("button")
+                        self.searchText = ""
                     } label: {
                         Image(systemName: "x.circle.fill")
                     }
@@ -124,7 +124,7 @@ extension SearchView {
                 }
             }
             Button("취소") {
-                print("취소")
+                self.searchText = ""
             }
             .foregroundColor(.white)
         }
@@ -157,7 +157,7 @@ extension SearchView {
                                         .padding(8)
                                     
                                     Button {
-                                        print("버튼클릭")
+                                        intent.likeButtonTapped(item: item)
                                     } label: {
                                         if item.isSelected {
                                             Image(systemName: "heart.fill")
