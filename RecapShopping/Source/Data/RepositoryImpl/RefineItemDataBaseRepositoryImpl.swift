@@ -22,12 +22,14 @@ final class RefineItemDataBaseRepositoryImpl: RefineItemDataBaseRepository {
     }
     
     func deleteItem(item: RefineItem) {
-        do {
-            try storage.write {
-                storage.delete(itemToData(item: item))
+        if let dbItem = storage.objects(ItemRealmDTO.self).first(where: { $0.productId == item.productId }) {
+            do {
+                try storage.write {
+                    storage.delete(dbItem)
+                }
+            } catch let error {
+                print("Delete error: \(error.localizedDescription)")
             }
-        } catch let error {
-            print("Delete error: \(error.localizedDescription)")
         }
     }
     
@@ -44,7 +46,7 @@ final class RefineItemDataBaseRepositoryImpl: RefineItemDataBaseRepository {
 
 extension RefineItemDataBaseRepositoryImpl {
     private func itemToData(item: RefineItem) -> ItemRealmDTO {
-        ItemRealmDTO(prudcutId: item.productId, title: item.title, imageURL: item.imageURL, lprice: item.lprice, mallName: item.mallName, isSelected: item.isSelected)
+        ItemRealmDTO(productId: item.productId, title: item.title, imageURL: item.imageURL, lprice: item.lprice, mallName: item.mallName, isSelected: item.isSelected)
     }
     
     private func cacheImage(item: [ItemRealmDTO]) -> AnyPublisher<[RefineItem], Error> {

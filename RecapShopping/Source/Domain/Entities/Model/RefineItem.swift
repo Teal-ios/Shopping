@@ -7,18 +7,29 @@
 
 import Foundation
 
-struct RefineItem: Hashable {
+final class RefineItem {
+    
     let title: String
     let image: Data
     let imageURL: String
     let lprice: String
     let mallName: String
     let productId: String
-    let isSelected: Bool
+    var isSelected: Bool
+    
+    init(title: String, image: Data, imageURL: String, lprice: String, mallName: String, productId: String, isSelected: Bool) {
+        self.title = title
+        self.image = image
+        self.imageURL = imageURL
+        self.lprice = lprice
+        self.mallName = mallName
+        self.productId = productId
+        self.isSelected = isSelected
+    }
 }
 
 extension RefineItem {
     var toData: ItemRealmDTO {
-        return ItemRealmDTO(prudcutId: productId, title: title, imageURL: imageURL, lprice: lprice, mallName: mallName, isSelected: isSelected)
+        return ItemRealmDTO(productId: productId, title: title, imageURL: imageURL, lprice: lprice, mallName: mallName, isSelected: isSelected)
     }
 }

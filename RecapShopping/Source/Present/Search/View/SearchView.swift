@@ -139,7 +139,7 @@ extension SearchView {
                 if state.refineItemList.count == 0 {
                     
                 } else {
-                    ForEach(state.refineItemList, id: \.self) { item in
+                    ForEach(state.refineItemList, id: \.self.productId) { item in
                         VStack {
                             ZStack(alignment: .bottomTrailing) {
                                 

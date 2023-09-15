@@ -17,7 +17,7 @@ final class ItemRealmDTO: Object {
     @Persisted var mallName: String
     @Persisted var isSelected: Bool
     
-    convenience init(prudcutId: String, title: String, imageURL: String, lprice: String, mallName: String, isSelected: Bool) {
+    convenience init(productId: String, title: String, imageURL: String, lprice: String, mallName: String, isSelected: Bool) {
         self.init()
         self.title = title
         self.productId = productId

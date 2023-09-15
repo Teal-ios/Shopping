@@ -8,6 +8,8 @@
 import SwiftUI
 import Combine
 
+import RealmSwift
+
 class SearchIntent {
 
     private var cancellable = Set<AnyCancellable>()
@@ -19,23 +21,28 @@ class SearchIntent {
     // MARK: Services
 
     private let productShoppingUseCase: ProductSearchUseCaseImpl
+    private let refineDataBaseUseCase: RefineItemDataBaseUseCaseImpl
 
     // MARK: Business Data
 
     private let externalData: SearchTypes.Intent.ExternalData
     private var contents: [RefineItem] = []
     private var text: String = ""
+    private var searchList: [RefineItem] = []
 
     // MARK: Life cycle
 
     init(model: SearchModelActionsProtocol & SearchModelRouterProtocol,
          externalData: SearchTypes.Intent.ExternalData,
-         productShoppingUseCase: ProductSearchUseCaseImpl) {
+         productShoppingUseCase: ProductSearchUseCaseImpl, refineDataBaseUseCase: RefineItemDataBaseUseCaseImpl) {
         self.externalData = externalData
         self.model = model
         self.routeModel = model
         self.productShoppingUseCase = productShoppingUseCase
+        self.refineDataBaseUseCase = refineDataBaseUseCase
     }
+    
+    var itemValidTrigger = CurrentValueSubject<Bool, Never>(false)
 }
 
 // MARK: - Public
@@ -47,11 +54,42 @@ extension SearchIntent: SearchIntentProtocol {
     
     
     func viewOnAppear() {
-        print("뷰뜸")
+        print("✅✅✅",Realm.Configuration.defaultConfiguration.fileURL!)
     }
     
     func likeButtonTapped(item: RefineItem) {
-        print("버튼클릭")
+        refineDataBaseUseCase.load()
+            .sink { error in
+                print(error)
+            } receiveValue: { [weak self] itemList in
+                guard let self else { return }
+                var validTrigger = false
+                for ele in itemList {
+                    if ele.productId == item.productId {
+                        self.refineDataBaseUseCase.delete(with: item)
+                        validTrigger = true
+                        for intent in searchList {
+                            if intent.productId == ele.productId {
+                                intent.isSelected = false
+                            }
+                        }
+                    }
+                }
+                
+                if !validTrigger {
+                    self.refineDataBaseUseCase.repository.addItem(item: item)
+                    for ele in searchList {
+                        if ele.productId == item.productId {
+                            ele.isSelected = true
+                        }
+                    }
+                }
+                
+                self.model?.fetchShoppingList(contents: searchList)
+
+            }
+            .store(in: &cancellable)
+
     }
     
     func categoryButtonTapped(category: CategoryModel) {
@@ -66,8 +104,21 @@ extension SearchIntent: SearchIntentProtocol {
             } receiveValue: { [weak self] shoppingList in
                 guard let self else { return }
                 print(shoppingList)
-                self.model?.fetchShoppingList(contents: shoppingList)
-                
+                refineDataBaseUseCase.load()
+                    .sink { error in
+                        print(error)
+                    } receiveValue: { refineList in
+                        for dbItem in refineList {
+                            for responseItem in shoppingList {
+                                if dbItem.productId == responseItem.productId {
+                                    responseItem.isSelected = true
+                                }
+                            }
+                        }
+                        self.model?.fetchShoppingList(contents: shoppingList)
+                        self.searchList = shoppingList
+                    }
+                    .store(in: &cancellable)
             }
             .store(in: &cancellable)
 
