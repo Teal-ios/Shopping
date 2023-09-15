@@ -9,5 +9,5 @@ import Foundation
 import Combine
 
 protocol ProductSearchRepository {
-    func fetchShoppingList(item: String) -> AnyPublisher<NaverShoppingList, NetworkError>
+    func fetchShoppingList(item: String) -> AnyPublisher<[RefineItem], NetworkError>
 }

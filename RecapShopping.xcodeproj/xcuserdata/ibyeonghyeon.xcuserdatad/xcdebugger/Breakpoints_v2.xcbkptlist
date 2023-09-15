@@ -14,10 +14,10 @@
             filePath = "RecapShopping/Source/Present/Search/Model/SearchModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "loadImage(items:)"
-            landmarkType = "7">
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "SearchModel"
+            landmarkType = "21">
             <Locations>
                <Location
                   uuid = "5B3C32F8-1095-4F9A-9330-0C8F70667010 - 66097d1a6b6d2f54"

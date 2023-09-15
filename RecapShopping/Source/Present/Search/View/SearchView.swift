@@ -22,7 +22,7 @@ struct SearchView: View {
     
     let rows = [GridItem(.flexible()), GridItem(.flexible())]
     let categoryLayout = [GridItem(.flexible())]
-        
+    
     @State var searchText: String = ""
     
     var body: some View {
@@ -135,16 +135,15 @@ extension SearchView {
 extension SearchView {
     func shoppingListScrollerView() -> some View {
         ScrollView {
-            
             LazyVGrid(columns: rows) {
-                if state.shoppingList == nil {
+                if state.refineItemList.count == 0 {
                     
                 } else {
-                    ForEach(state.itemDTOList, id: \.self) { item in
+                    ForEach(state.refineItemList, id: \.self) { item in
                         VStack {
                             ZStack(alignment: .bottomTrailing) {
                                 
-                                Image(uiImage: item.image)
+                                Image(uiImage: UIImage(data: item.image) ?? UIImage())
                                     .resizable()
                                     .frame(width: UIScreen.screenWidth / 2 - 20, height: UIScreen.screenWidth / 2 - 20)
                                     .clipped()

@@ -23,7 +23,7 @@ class SearchIntent {
     // MARK: Business Data
 
     private let externalData: SearchTypes.Intent.ExternalData
-    private var contents: NaverShoppingList? = nil
+    private var contents: [RefineItem] = []
     private var text: String = ""
 
     // MARK: Life cycle

@@ -20,7 +20,7 @@ struct NaverShoppingListDTO: Decodable {
 }
 
 extension NaverShoppingListDTO {
-    var toDomain: NaverShoppingList {
-        return .init(lastBuildDate: lastBuildDate, total: total, start: start, display: display, items: items.map { $0.toDomain })
-    }
+//    var toDomain: NaverShoppingList {
+//        return .init(lastBuildDate: lastBuildDate, total: total, start: start, display: display, items: items.map { $0.toDomain })
+//    }
 }

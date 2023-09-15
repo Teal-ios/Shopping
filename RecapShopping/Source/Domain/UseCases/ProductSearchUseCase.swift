@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol ProductSearchUseCase {
-    func excute(item: String) -> AnyPublisher<NaverShoppingList, NetworkError>
+    func excute(item: String) -> AnyPublisher<[RefineItem], NetworkError>
 }
 
 final class ProductSearchUseCaseImpl: ProductSearchUseCase {
@@ -21,8 +21,8 @@ final class ProductSearchUseCaseImpl: ProductSearchUseCase {
         self.productSearchRepository = productSearchRepository
     }
     
-    func excute(item: String) -> AnyPublisher<NaverShoppingList, NetworkError> {
-        return Future<NaverShoppingList, NetworkError> { promiss in
+    func excute(item: String) -> AnyPublisher<[RefineItem], NetworkError> {
+        return Future<[RefineItem], NetworkError> { promiss in
             self.productSearchRepository.fetchShoppingList(item: item)
                 .sink { completion in
 
