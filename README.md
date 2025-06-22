@@ -1,2 +1,2 @@
-# RecapShopping
-RecapShopping - MVI / SwiftUI Repository
+# Shopping
+Shopping - MVI / SwiftUI Repository
